@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import AppProviders from './AppProviders';
 import AppRouter from './AppRouter';
 
