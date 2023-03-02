@@ -5,7 +5,7 @@ import AppRouter from './AppRouter';
 const Main = () => {
    
     return (
-        <div>
+        <div style={{fontFamily: 'sans-serif'}}>
             <AppProviders>
                 <AppRouter />
             </AppProviders>

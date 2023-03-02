@@ -1,26 +1,37 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../providers/ThemeProvider";
 import ColorPanel from "./ColorPanel";
+import DarkModeSlider from "./DarkModeSlider"
+import { colorList, ColorsContext, labels } from "../../providers/ColorsProvider";
 
 
-const colorList = [
-    ['#606C38', '#283618', '#FEFAE0', '#DDA15E', '#BC6C25'],
-    ['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76f51'],
-    ['#353535', '#3C6E71', '#FFFFFF', '#D9D9D9', '#284B63'],
-    ['#222831', '#393E46', '#00ADB5', '#BBBBBB', '#EEEEEE']
-]
 export default function PageUI(){
     const theme = useContext(ThemeContext)
+    const [_, setColors] = useContext(ColorsContext)
+
+    function themeClicked(n) {
+        setColors(colorList[n])
+    }
     return (
         <>
-            <h1 style={{color: theme.textHeaders, textAlign: "center"}}>User Interface</h1>
-            <h3 style={{color: theme.textHeaders, textAlign: "center"}}>Colors</h3>
+            <h1 style={{color: theme.textHeaders, textAlign: "center"}}>Themes and Colors</h1>
+            <div style={{marginLeft: '40%', marginRight: '40%'}}>
+                <div style={{display: 'flex', flexDirection: 'row', width: 240}}>
+                    <p style={{flex: 1,  width: 200, color: theme.text, fontSize: '1.25rem', }}>dark mode</p>
+                    <DarkModeSlider />
+                </div>
+            </div>
             <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center'}}>
                 {colorList.map((colors, i) => {
-                return <div key={i} style={{flex: 1, marginTop: 45, width: 700}}>
+                return <div key={i} style={{flex: 1, marginTop: 35, width: 700}}>
+                    <p onClick={() => themeClicked(i)} className='hoverpointer' style={{marginBottom: 5, fontSize: '1.5rem', color: theme.text}}>{labels[i]}</p>
                     <ColorPanel colorArr={colors} />
                 </div>
             })}
             </div>
+            <div style={{minHeight: 200, width: '100%'}}>
+
+            </div>
+
         </>
     )}
