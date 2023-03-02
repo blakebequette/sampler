@@ -5,7 +5,9 @@ import ColorPanel from "./ColorPanel";
 
 const colorList = [
     ['#606C38', '#283618', '#FEFAE0', '#DDA15E', '#BC6C25'],
-    ['brown', 'lightblue', 'orange', 'black', 'white']
+    ['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76f51'],
+    ['#353535', '#3C6E71', '#FFFFFF', '#D9D9D9', '#284B63'],
+    ['#222831', '#393E46', '#00ADB5', '#BBBBBB', '#EEEEEE']
 ]
 export default function PageUI(){
     const theme = useContext(ThemeContext)
@@ -13,9 +15,9 @@ export default function PageUI(){
         <>
             <h1 style={{color: theme.textHeaders, textAlign: "center"}}>User Interface</h1>
             <h3 style={{color: theme.textHeaders, textAlign: "center"}}>Colors</h3>
-            <div style={{width: '100%', paddingRight: 200, paddingLeft: 200}}>
+            <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center'}}>
                 {colorList.map((colors, i) => {
-                return <div key={i} style={{marginTop: 30}}>
+                return <div key={i} style={{flex: 1, marginTop: 45, width: 700}}>
                     <ColorPanel colorArr={colors} />
                 </div>
             })}
