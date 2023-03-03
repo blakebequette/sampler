@@ -39,8 +39,9 @@ export default function NavList() {
 
   return (
     <nav style={navStyle}>
-       {links.map(link => {
+       {links.map((link, i) => {
         return <NavLink
+            key={i}
             to={link.to}
             style={({ isActive }) =>
               isActive ? activeStyle : inactiveStyle

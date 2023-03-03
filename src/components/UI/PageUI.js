@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { ThemeContext } from "../../providers/ThemeProvider";
 import ColorPanel from "./ColorPanel";
 import DarkModeSlider from "./DarkModeSlider"
@@ -7,7 +7,18 @@ import { colorList, ColorsContext, labels } from "../../providers/ColorsProvider
 
 export default function PageUI(){
     const theme = useContext(ThemeContext)
-    const [_, setColors] = useContext(ColorsContext)
+    const [colors, setColors] = useContext(ColorsContext)
+    console.log("re-render")
+
+    const r = useMemo(() => { 
+        console.log('MEMO re-run')
+        return Math.floor(Math.random()*10)
+    }, [colors])
+    console.log(r)
+
+    useEffect(() => {
+        console.log("useEffect Ran")
+    }, [colors])
 
     function themeClicked(n) {
         setColors(colorList[n])
