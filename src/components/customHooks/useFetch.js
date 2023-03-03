@@ -21,8 +21,12 @@ export default function useFetch({url}){
                 setError(null)
             })
             .catch(err => {
-                setIsPending(false)
-                setError(err.message)
+                if (err.name === 'AbortError') {
+                    console.log('fetch aborted')
+                } else {
+                    setIsPending(false)
+                    setError(err.message)
+                }
             })
     }, 
     [])
