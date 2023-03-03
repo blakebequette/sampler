@@ -4,7 +4,7 @@ import { ThemeContext } from "../providers/ThemeProvider";
 
 const links = [
   {to: '/', label: "Home"},
-  {to: 'ui', label: 'UI'}
+  {to: 'ui', label: 'Theme'}
 ]
 export default function NavList() {
   // This styling will be applied to a <NavLink> when the
